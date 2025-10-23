@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+void helper(int arr[],int idx,int n){
+    if(idx>=n)return;
+    cout<<arr[idx]<<" ";
+    helper(arr,idx+1,n);
+}
+
+int main() {
+   
+    int arr[5]={1,2,3,4,5};
+    int n=5;
+    helper(arr,0,n);
+
+    return 0;
+}
+
