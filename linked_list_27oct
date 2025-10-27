@@ -1,0 +1,114 @@
+#include <iostream>
+using namespace std;
+struct Node{
+    int data;
+    Node* next;
+    Node(int v){
+        data=v;
+        next=NULL;
+    }
+};
+
+void Print(Node* head){
+    Node* p=head;
+    while(p!=NULL){
+        cout<<p->data<<" ";
+        p=p->next;
+    }
+    cout<<endl;
+}
+
+void Max(Node* head){
+    Node* p=head;
+    int max=p->data;
+    while(p!=NULL){
+        if(max<p->data){
+            max=p->data;
+        }
+        p=p->next;
+    }
+    cout<<"max: "<<max;
+    cout<<endl;
+}
+
+void Min(Node* head){
+    Node* p=head;
+    int min=p->data;
+    while(p!=NULL){
+        if(min>p->data){
+            min=p->data;
+        }
+        p=p->next;
+    }
+    cout<<"Min: "<<min<<endl;
+}
+
+void Node_count(Node* head){
+    Node* p=head;
+    int total_nodes=0;
+    while(p!=NULL){
+        p=p->next;
+        total_nodes++;
+    }
+
+    cout<<"total_nodes: "<<total_nodes<<endl;
+}
+
+void Odd(Node* head){
+    Node* p=head;
+    int odd=0;
+    while(p!=NULL){
+        if(p->data%2==1){
+            odd++;
+        }
+        p=p->next;
+
+    }
+
+    cout<<"odd: "<<odd<<endl;
+}
+
+void Min_Max(Node* head){
+    Node* p=head;
+    int min=p->data;
+    int max=p->data;
+    while(p!=NULL){
+        if(min>p->data){
+            min=p->data;
+        }
+        if(max<p->data){
+            max=p->data;
+        }
+        p=p->next;
+
+    }
+
+    cout<<"min: "<<min<<endl<<"max: "<<max<<endl;
+}
+
+void Sum(Node* head){
+    Node* p=head;
+    int sum=0;
+    while(p!=NULL){
+        sum+=p->data;
+        p=p->next;
+
+    }
+
+    cout<<"sum: "<<sum<<endl;
+}
+
+int main() {
+    Node* head=new Node(12);
+    head->next =new Node(22);
+    head->next->next =new Node(32);
+    head->next->next->next =new Node(42);
+    Print(head);
+    Max(head);
+    Min(head);
+    Node_count(head);
+    Odd(head);
+    Min_Max(head);
+    Sum(head);
+    return 0;
+}
