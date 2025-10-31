@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+void Occurence(int merged[],int x){
+    int test[x]={};
+    int fre[x]={};
+    int t=0,max_fre=0;
+    for(int i=0;i<x;i++){
+        int count=1;
+        for(int j=i+1;j<x;j++){
+            if(merged[i]==merged[j]){
+                count++;
+            }else {
+                test[t]=merged[i];
+                fre[t]=count;
+                t++;
+                i=j-1;
+                break;
+            }
+        }
+        if(max_fre<=count){
+            max_fre=count;
+        }
+    }
+    int max=0;
+    for(int i=0;i<x;i++){
+        if(max_fre==fre[i]){
+            max=i;
+            cout<<test[max]<<" ";
+        }
+    }
+}
+int main(){
+    int arr[]={1,1,2,3};
+    int arr2[]={4,4,7,5,6};
+    int n=4,m=5;
+    int total=9;
+    int merged[total];
+    for(int i=0;i<n;i++){
+        merged[i]=arr[i];
+    }
+    for(int i=0;i<m;i++){
+        merged[i+n]=arr2[i];
+    }
+    sort(merged,merged+total);
+    Occurence(merged,total);
+    return 0;
+}
