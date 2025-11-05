@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Node{
+    int data;
+    Node* next;
+    Node( int d){
+        data=d;
+        next=nullptr;
+    }
+};
+void Palindrome(Node* head){
+    Node* p=head;
+    int count=0;
+    while(p!=nullptr){
+        count++;
+        p=p->next;
+    }
+    p=head;
+    Node* q=head;
+    while(p!=nullptr && p->next!=nullptr){
+        p=p->next->next;
+        q=q->next;
+    }
+    Node* x=head;
+    Node* y=nullptr;
+    Node* z=nullptr;
+    while(x!=q){
+        z=y;
+        y=x;
+        x=x->next;
+        y->next=z;
+    }
+    Node* rev=y;
+    if(count%2!=0){
+        x=x->next;
+    }
+    bool flag=true;
+    while(rev!=nullptr ){
+        if(rev->data != x->data ){
+            flag=false;
+            break;
+        }else{
+            rev=rev->next;
+            x=x->next;
+        }
+    }
+    if(flag){
+        cout<<"Linked List is Palindrome"<<endl;
+    }else{
+        cout<<"Linked List is not Palindrome"<<endl;
+    }
+}
+int main(){
+    Node* head1=new Node(2);
+    head1->next=new Node(12);
+    head1->next->next=new Node(22);
+    head1->next->next->next=new Node(22);
+    head1->next->next->next->next=new Node(12);
+    head1->next->next->next->next->next=new Node(2);
+    Palindrome(head1);
+    return 0;
+}
