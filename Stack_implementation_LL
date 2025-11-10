@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Node{
+    int data;
+    Node* next;
+
+    Node(int val){
+        data=val;
+        next=nullptr;
+    }
+
+};
+class Stack{
+    public:
+    Node* top;
+    Stack(){
+        top=nullptr;
+    }
+
+    void push(int data){
+        Node* newNode=new Node(data);
+        newNode->next=top;
+        top=newNode;
+    }
+
+    void pop(){
+        Node* temp=top;
+        top=top->next;
+        delete temp;
+    }
+
+    bool isEmpty(){
+        return top==nullptr;
+    }
+
+    int peek(){
+        if(top==nullptr){
+            return -1;
+        }else{
+            return top->data;
+        }
+    }
+
+    void traversal(){
+        Node* temp=top;
+        while(temp!=nullptr){
+            cout<<temp->data<<" ";
+            temp=temp->next;
+        }
+    }
+};
+
+int main(){
+    Stack St;
+    St.push(10);
+    St.push(20);
+    St.push(30);
+    St.push(40);
+    St.push(50);
+    cout<<St.peek()<<endl;
+    St.pop();
+    cout<<St.peek()<<endl;
+    St.traversal();
+    cout<<endl;
+    cout<<St.isEmpty()<<endl;
+    return 0;
+}
