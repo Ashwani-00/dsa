@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Stack{
+    public:
+        int top;
+        int arr[100];
+
+        //position at starting
+        Stack(){
+            top=-1;
+        }
+
+        void push(int val){
+            if(top==100){
+                cout<<"Stack is overfull"<<endl;
+            }else{
+                top++;
+                arr[top]=val;
+            }
+        }
+
+        void pop(){
+            if(top==-1){
+                cout<<"Stack is empty/underflow"<<endl;
+            }else{
+                top--;
+
+            }
+        }
+
+        bool isEmpty(){
+            if(top==-1){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+
+        int peek(){
+            if(top==-1){
+                return -1;
+            }
+            return arr[top];
+        }
+
+        void traversal(){
+            if(top==-1){
+                cout<<"Stack in underflow"<<endl;
+            }else{
+                int i=top;
+                while(i!=-1){
+                    cout<<arr[i]<<" ";
+                    i--;
+                }
+            }
+        }
+};
+
+int main(){
+    Stack St;
+    St.push(10);
+    St.push(20);
+    St.push(30);
+    St.push(40);
+    St.push(50);
+    St.pop();
+    cout<<St.isEmpty()<<endl;
+    cout<<St.peek()<<endl;
+    St.traversal();
+    return 0;
+}
+
