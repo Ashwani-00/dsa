@@ -1,0 +1,83 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Queue{
+    public:
+    int arr[100];
+    int front,rear;
+    int size=0;
+    Queue(){
+        front=0;
+        rear=-1;
+    }
+    bool isFull(){
+        // if(rear==100){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
+        return size==100;
+    }
+    bool isEmpty(){
+        // if(rear==100){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
+        return size==0;
+    }
+    void enqueue(int x){
+        if(isFull()==1){
+            cout<<"Queue is Full"<<endl;
+            return;
+        }
+        else{
+            rear=(rear+1)%100;
+            arr[rear]=x;
+            size++;
+        }
+    }
+    int dequeue(){
+        if(isEmpty()==1){
+            cout<<"Queue is Empty";
+            return -1;
+        }
+        else{
+            int val=arr[front];
+            front=(front+1)%100;
+            size--;
+            return val;
+        }
+    }
+    int getFront(){
+        if(size==0){
+            return -1;
+        }else{
+            return arr[front];
+        }
+    }
+
+    void traversal(){
+        int i=front;
+        int count=size;
+        while(count>0){
+            cout<<arr[i]<<" ";
+            i=(i+1)%100;
+            count--;
+
+        }
+        cout<<endl;
+    }
+};
+int main(){
+    Queue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.enqueue(40);
+    cout<<q.getFront()<<endl;
+    q.traversal();
+    q.dequeue();
+    q.traversal();
+    cout<<q.getFront()<<endl;
+    return 0;
+}
