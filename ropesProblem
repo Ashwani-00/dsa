@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    vector<int>vec={1,4,2,7,9};
+    priority_queue<int, vector<int>, greater<int>> pq;
+    for(auto & x:vec){
+        pq.push(x);
+    }
+    int sum=0;
+    int i=vec.size();
+    while(i>1){
+        int x=pq.top();
+        pq.pop();
+        int z=pq.top();
+        pq.pop();
+        sum=sum+x+z;
+        pq.push(x+z);
+        i--;
+    }
+    cout<<"Length of rope: "<<pq.top()<<endl;
+    cout<<"Cost of the rope: "<<sum<<endl;
+    return 0;
+}
