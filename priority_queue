@@ -1,0 +1,56 @@
+//priority queue
+
+/*pq.push nlogn
+pq.pop nlogn
+pq.top O(1)
+pq.empty O(1)
+pq.size O(!)*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    vector<int>vec={9,1,7,8,6};
+    priority_queue<int> pq; // for max heap
+    priority_queue<int, vector<int>, greater<int>> pq_min;  // for min heap
+    for(auto& x:vec){
+        pq.push(x);
+    }
+    cout<<pq.top()<<endl;
+    int t=3;
+    while(t>1){
+        pq.pop();
+        t--;
+    }
+    cout<<pq.top()<<endl;
+     //find kth largest element
+    int k=2;
+    for(auto & x:vec){
+        pq_min.push(x);
+        if(pq_min.size()>k) pq_min.pop();
+    }
+    cout<<pq_min.top();
+
+    //find kth smallest element
+
+    //1st approch O(nlogk)
+    /*-int k=3;
+    for(auto & x:vec){
+        pq.push(x);
+        if(pq.size()>k) pq.pop();
+    }
+    cout<<pq.top()<<endl;
+    */
+
+    //2nd approch O(nlogn)
+    /*int k=3;
+    for(auto & x:vec){
+        pq.push(x);
+    }
+    while(k>1){
+        pq.pop();
+        k--;
+    }
+    cout<<pq.top()<<endl;
+    */
+    return 0;
+}
