@@ -1,0 +1,156 @@
+//print in simple order
+#include<bits/stdc++.h>
+using namespace std;
+
+void print(int idx,int n){
+    if(idx>n) return;
+    cout<<idx<<" ";
+    print(idx+1,n);
+}
+
+int main(){
+    int n=5;
+    print(1,n);
+    return 0;
+}
+
+
+
+//print in reverse order
+#include<bits/stdc++.h>
+using namespace std;
+
+void print(int idx){
+    if(idx<=0) return;
+    cout<<idx<<" ";
+    print(idx-1);
+}
+
+int main(){
+    int n=5;
+    print(n);
+    return 0;
+}
+
+//done as decreasing n which is not a good prctice
+#include<bits/stdc++.h>
+using namespace std;
+
+void print(int idx,int n){
+    if(n<idx) return;
+    cout<<n<<" ";
+    print(idx,n-1);
+}
+
+int main(){
+    int n=5;
+    print(1,n);
+    return 0;
+}
+
+//using tail recursion
+#include<bits/stdc++.h>
+using namespace std;
+
+void print(int idx,int n){
+    if(n<idx) return;
+    print(idx+1,n);
+    cout<<idx<<" ";
+}
+
+int main(){
+    int n=5;
+    print(1,n);
+    return 0;
+}
+
+//print array in a straight way
+#include<bits/stdc++.h>
+using namespace std;
+void print(int arr[],int x,int n){
+    if(x>=n)return;
+    cout<<arr[x]<<" ";
+    print(arr,x+1,n);
+}
+int main(){
+    int arr[]={2,3,5,4,7};
+    int n=5;
+    print(arr,0,n);
+    return 0;
+}
+
+//print array in reverse order
+#include<bits/stdc++.h>
+using namespace std;
+void print(int arr[],int x,int n){
+    if(x>=n)return;
+    print(arr,x+1,n);
+    cout<<arr[x]<<" ";
+}
+int main(){
+    int arr[]={2,3,5,4,7};
+    int n=5;
+    print(arr,0,n);
+    return 0;
+}
+
+
+//find sum of array
+#include<bits/stdc++.h>
+using namespace std;
+int sum(int arr[],int x,int n){
+    if(x>=n)return 0;
+    return arr[x]+sum(arr,x+1,n);
+}
+int main(){
+    int arr[]={2,3,5,4,7};
+    int n=5;
+    int total=sum(arr,0,n);
+    cout<<total<<" ";
+    return 0;
+}
+
+
+//find max element in array
+
+/*
+int max(int arr[],int idx,int n){
+    if(idx==n)return INT_MIN;
+    return max(arr[idx],max(arr,idx+1,n);
+*/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int max(int arr[],int x,int n,int m){
+    if(x>=n)return m;
+    if(m<arr[x]){
+        m=arr[x];
+    }
+    return max(arr,x+1,n,m) ;
+}
+int main(){
+    int arr[]={2,3,7,4,2};
+    int n=5;
+    int total=max(arr,0,n,-1);
+    cout<<total<<" ";
+    return 0;
+}
+
+//find min element in array
+#include<bits/stdc++.h>
+using namespace std;
+int min(int arr[],int x,int n,int m){
+    if(x>=n)return m;
+    if(m>=arr[x]){
+        m=arr[x];
+    }
+    return min(arr,x+1,n,m) ;
+}
+int main(){
+    int arr[]={2,3,1,4,12};
+    int n=5;
+    int total=min(arr,1,n,arr[0]);
+    cout<<total<<" ";
+    return 0;
+}
