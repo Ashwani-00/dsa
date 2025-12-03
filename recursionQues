@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+int sumofDigits(int val){
+    if(val==0)return 0;
+    return val%10+sumofDigits(val/10);
+}
+int Occurence(int arr[],int idx,int max,int tar){
+    if(idx==max)return 0;
+    if(arr[idx]==tar)return 1+Occurence(arr,idx+1,max,tar);
+    return Occurence(arr,idx+1,max,tar);
+}
+int firstOcc(int arr[],int idx,int target,int n){
+    if(idx>=n)return -1;
+    if(target==arr[idx])return idx;
+    return firstOcc(arr,idx+1,target,n);
+}
+int lastOcc(int arr[],int idx,int target,int n){
+    if(idx>=n)return -1;
+    int last=lastOcc(arr,idx+1,target,n);
+
+    if(last!=-1)return last;
+    return (target==arr[idx])?idx:-1;
+}
+int main(){
+    int n=7;
+    int arr[]={4,1,1,2,3,1,5};
+    int target=1;
+    cout<<sumofDigits(12323)<<endl;
+    cout<<Occurence(arr,0,n,target)<<endl;
+    cout<<firstOcc(arr,0,target,n)<<endl;
+    cout<<lastOcc(arr,0,target,n)<<endl;
+    return 0;
+}
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int fact(int n){
+    if(n==1)return 1;
+    return n*fact(n-1);
+}
+int power(int a,int b){
+    if(b==0 )return 1;
+    if(b==1)return a;
+    return a*power(a,b-1);
+}
+int main(){
+    int n=5;
+    cout<<fact(n)<<endl;
+    cout<<power(2,n);
+    return 0;
+}
