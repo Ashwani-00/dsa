@@ -1,0 +1,65 @@
+// pre in and post are dfs and level order is bfs
+//dfs depth first search
+//bfs breadth first search
+
+
+#include<bits/stdc++.h>
+using namespace std;
+struct Node{
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val){
+        data=val;
+        left=nullptr;
+        right=nullptr;
+    }
+};
+void preorder(Node* root){
+    if(!root)return;
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+void postorder(Node* root){
+    if(!root)return;
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<" ";
+}
+void inorder(Node* root){
+    if(!root)return;
+    inorder(root->left);
+    cout<<root->data<<" ";
+    inorder(root->right);
+}
+int sumtree(Node* root){
+    if(!root)return 0;
+    return root->data+sumtree(root->left)+sumtree(root->right);
+}
+int main(){
+    Node* root=new Node(1);
+    Node* leftnode=new Node(2);
+    Node* rightnode=new Node(3);
+
+    root->left=leftnode;
+    root->right=rightnode;
+
+    Node* left1=new Node(4);
+    Node* right1=new Node(5);
+    Node* left2=new Node(6);
+    Node* right2=new Node(7);
+    leftnode->left=left1;
+    leftnode->right=right1;
+    rightnode->left=left2;
+    rightnode->right=right2;
+    preorder(root);
+    cout<<endl;
+    postorder(root);
+    cout<<endl;
+    inorder(root);
+    cout<<endl;
+    cout<<sumtree(root);
+    return 0;
+}
