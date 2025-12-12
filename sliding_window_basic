@@ -1,0 +1,49 @@
+
+
+/*  time complexity o(n2)
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    vector<int> arr={3,4,1,5,-2,7,6,1,3};
+    int k=3;
+    int n=arr.size();
+    int maximum=INT_MIN;
+    for(int i=0;i<n;i++){
+        int sum=0;
+        for(int j=i;j<i+k && j<n;j++){
+            sum+=arr[j];
+        }
+        maximum=max(maximum,sum);
+    }
+    cout<<maximum;
+    return 0;
+}
+*/
+
+
+// time complexity of o(n)
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    vector<int>arr={3,4,1,5,-2,7,6,1,3};
+    int k=3;
+    int n=arr.size();
+    int maximum=INT_MIN;
+    int sum=0;
+    int i=0,j=0;
+    while(j<n){
+        sum+=arr[j];
+        int window_len=j-i+1;
+        if(window_len>k){
+            sum-=arr[i];
+            i++;
+            window_len--;
+        }
+        if(window_len==k){
+            maximum=max(maximum,sum);
+        }
+        j++;
+    }
+    cout<<maximum;
+    return 0;
+}
